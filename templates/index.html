@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Frågeassistent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Frågeassistent</h1>
+      <section id="auth-section">
+        <h2>1. Registrera konto</h2>
+        <form id="register-form" class="card">
+          <label>
+            Namn
+            <input type="text" name="full_name" required />
+          </label>
+          <label>
+            E-post
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            Lösenord
+            <input type="password" name="password" minlength="8" required />
+          </label>
+          <button type="submit">Skapa konto</button>
+          <p class="feedback" data-role="register-feedback"></p>
+        </form>
+
+        <h2>2. Logga in</h2>
+        <form id="login-form" class="card">
+          <label>
+            E-post
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            Lösenord
+            <input type="password" name="password" required />
+          </label>
+          <button type="submit">Logga in</button>
+          <p class="feedback" data-role="login-feedback"></p>
+        </form>
+      </section>
+
+      <section id="app-section" class="hidden">
+        <h2>3. Ladda upp ett frågedokument</h2>
+        <form id="upload-form" class="card" enctype="multipart/form-data">
+          <label>
+            Titel
+            <input type="text" name="title" placeholder="Mitt dokument" />
+          </label>
+          <label>
+            Välj fil (PDF eller text)
+            <input type="file" name="file" accept=".pdf,.txt" required />
+          </label>
+          <button type="submit">Analysera dokument</button>
+          <p class="feedback" data-role="upload-feedback"></p>
+        </form>
+
+        <section id="documents-list" class="card hidden">
+          <h3>Dina dokument</h3>
+          <ul></ul>
+        </section>
+
+        <section id="document-details" class="card hidden">
+          <h3 id="document-title"></h3>
+          <h4>Sammanfattning</h4>
+          <p id="document-summary"></p>
+          <h4>Frågor</h4>
+          <ul id="questions-list"></ul>
+        </section>
+
+        <section id="answer-section" class="card hidden">
+          <h3>5. AI-svar</h3>
+          <p id="selected-question"></p>
+          <button id="answer-button">Generera svar</button>
+          <div id="answer-result"></div>
+        </section>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
